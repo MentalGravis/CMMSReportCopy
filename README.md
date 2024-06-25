@@ -8,4 +8,4 @@ A szkript a legtöbb modern böngészőre telepíthető.<br>
     * [Új Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao)
 1. Most már telepítheted a szkriptet. Ehhez [kattints ide](https://github.com/MentalGravis/CMMSReportCopy/releases/latest/download/CMMSLayoutChange.user.js).
 1. A megjelenő oldalon kattints az **Install** gombra.
-1. Lépj be a Terc-etalon-ba, és használd egészséggel.
+1. Lépj be a CMMS-be, és használd egészséggel.
