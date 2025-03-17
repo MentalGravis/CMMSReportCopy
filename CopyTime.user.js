@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name        CopyTime
 // @namespace   Violentmonkey Scripts
+// @match       https://outlook.office365.com/mail/*
 // @match       https://outlook.office.com/mail/*
 // @grant       GM_setClipboard
 // @grant       GM_setValue
 // @grant       GM_getValue
-// @version     2.1
+// @version     2.2
 // @author      Mental Gravis
 // @description 2024. 05. 14. 9:59:28
 // @require     https://code.jquery.com/jquery-3.6.4.min.js#sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=
@@ -44,12 +45,16 @@
             try {
                 let ticketD = findElementByTextContentXPath("Bejelentés szövege:");
                 if (!ticketD) throw new Error("Ticket description element not found.");
-                let ticketDiscText = ticketD.parentElement.children[1].textContent.trim();
-                console.log(ticketDiscText);
 
+                let ticketDiscText = "";
+                try{
+                    ticketDiscText = ticketD.parentElement.children[1].textContent.trim();
+                } catch (error) {
+                    ticketDiscText = ticketD.parentElement.parentElement.parentElement.children[1].textContent.trim();
+                }
+                console.log(ticketDiscText);
                 // Call respPerson function to ensure responsible person is handled
                 await respPerson();
-
                 GM_setClipboard(ticketDiscText);
             } catch (error) {
                 console.error(error);
@@ -74,7 +79,12 @@
             try {
                 let ticketA = findElementByTextContentXPath("Főhelyszín:");
                 if (!ticketA) throw new Error("Ticket address element not found.");
-                let ticketAddrText = ticketA.parentElement.children[3].textContent.trim();
+                let ticketAddrText = ""
+                try{
+                    ticketAddrText = ticketA.parentElement.children[3].textContent.trim();
+                } catch (error) {
+                    ticketAddrText = ticketA.parentElement.parentElement.parentElement.children[3].textContent.trim();
+                }
                 console.log(ticketAddrText);
                 return ticketAddrText;
             } catch (error) {
