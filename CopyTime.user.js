@@ -64,7 +64,7 @@
 
         function ticketID() {
             try {
-                let ticketI = document.querySelector("#ConversationReadingPaneContainer > div > div > div > div > div > div > div > div > div > span:nth-child(1)");
+                let ticketI = document.querySelector("#ConversationReadingPaneContainer > div > div > div > div > div > span:nth-child(1)");
                 if (!ticketI) throw new Error("Ticket ID element not found.");
                 let ticketIDText = ticketI.textContent.match(/Q\d*/g)[0];
                 console.log(ticketIDText);
@@ -106,7 +106,7 @@
                 console.log("Responsible person for " + address + ": " + responsiblePerson);
 
                 // Assuming the title of the email is where ticketID is retrieving it
-                let emailTitle = document.querySelector("#ConversationReadingPaneContainer > div > div > div > div > div > div > div > div > div > span:nth-child(1)");
+                let emailTitle = document.querySelector("#ConversationReadingPaneContainer > div > div > div > div > div > span:nth-child(1)");
                 if (emailTitle && !emailTitle.textContent.includes(" ------------------> ")) {
                     emailTitle.textContent += " ------------------> " + responsiblePerson;
                 }
